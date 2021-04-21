@@ -1,6 +1,7 @@
 // Library section
 let myLibrary = [];
 addBookToLibrary('Deadhouse Gate','Steven Eriksson',800,true);
+addBookToLibrary('Tides of Midnight','Steven Eriksson',800,true);
 
 function Book(a,b,c,flag) {
     this.title = a;
@@ -32,16 +33,34 @@ button.addEventListener('click', function() {
 updateDisplay();
 function updateDisplay() {
     let bookDisplay = document.getElementById('book-display');
-    let text = "";
+    let text = '';
+    let i = 0;
     myLibrary.forEach(book => {
         let values = Object.values(book);
-        text += '<div class="book-card"><p class="titleCard">'+values[0]+'<p>';
+        text += '<div class="book-card"><button type="button" class="remove-book" value='+i+'>x</button>'
+        text += '<p class="titleCard">'+values[0]+'<p>';
         text += '<p class="authorCard">'+values[1]+'<p>';
         text += '<p class="pagesCard">'+values[2]+' pages<p></div>';
+        i++;
     })
     bookDisplay.innerHTML = text;
+    updateRemoveButton();
 }
-let bookCards = document.getElementsByClassName('book-card');
 //  *add book button DOM
 let addButton = document.getElementById('add-button');
 addButton.addEventListener('click',() => form.style.display = 'initial');
+//  *remove book button DOM
+updateRemoveButton();
+function updateRemoveButton() {
+    let removeButton = document.querySelectorAll('.remove-book');
+    removeButton.forEach(x => {
+        x.addEventListener('click',function() {
+            index = parseInt(x.value);
+            console.log("index is " + index);
+            myLibrary.splice(index,1);
+            updateDisplay();
+            console.table(myLibrary);
+        })
+    })
+    console.log("remove button updated");
+}

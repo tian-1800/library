@@ -56,7 +56,18 @@ h1 {
     border-radius: 10px;
     color: rgb(12, 35, 74);
 }
-
+.remove-book{
+    float: right;
+    font-weight: bold;
+    border-radius: 50%;
+}
+.titleCard {
+    font-weight: bold;
+    font-size: 1.1em;
+}
+.authorCard {
+    font-style: italic;
+}
 #add-button {
     position: fixed;
     width: 1.5em;
