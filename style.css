@@ -45,6 +45,7 @@ h1 {
 #book-display {
     width: 900px;
     margin: auto;
+    margin-top: 5em;
     display: grid;
     grid-template-columns: repeat(3,30%);
     gap: 40px;
@@ -59,7 +60,8 @@ h1 {
 .remove-book{
     float: right;
     font-weight: bold;
-    border-radius: 50%;
+    background-color: rgba(15,15,15,0);
+    border: solid 0px;
 }
 .titleCard {
     font-weight: bold;
@@ -67,6 +69,10 @@ h1 {
 }
 .authorCard {
     font-style: italic;
+}
+.read-button {
+    background-color: rgba(15,15,15,0);
+    border-width: 0px;
 }
 #add-button {
     position: fixed;

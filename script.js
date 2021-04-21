@@ -40,11 +40,13 @@ function updateDisplay() {
         text += '<div class="book-card"><button type="button" class="remove-book" value='+i+'>x</button>'
         text += '<p class="titleCard">'+values[0]+'<p>';
         text += '<p class="authorCard">'+values[1]+'<p>';
-        text += '<p class="pagesCard">'+values[2]+' pages<p></div>';
+        text += '<p class="pagesCard">'+values[2]+' pages<p>';        
+        text += '<p>Status: <button type="button" class="read-button" value='+i+'>'+(book.readFlag? 'Read':'Not Read')+'</button></p></div>'
         i++;
     })
     bookDisplay.innerHTML = text;
     updateRemoveButton();
+    updateToggleButton();
 }
 //  *add book button DOM
 let addButton = document.getElementById('add-button');
@@ -63,4 +65,21 @@ function updateRemoveButton() {
         })
     })
     console.log("remove button updated");
+}
+//  *Toggle book read status
+Book.prototype.toggleRead = function() {
+    this.readFlag = !this.readFlag;
+}
+updateToggleButton();
+function updateToggleButton() {
+    let toggleButton = document.querySelectorAll('.read-button');
+    toggleButton.forEach(x => {
+        console.log(x.value);
+        x.addEventListener('click',function() {
+            index = parseInt(x.value);
+            console.log("index sekarang " + index);
+            myLibrary[index].toggleRead();
+            updateDisplay();
+        })
+    })
 }
